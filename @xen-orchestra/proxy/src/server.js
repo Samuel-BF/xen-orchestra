@@ -31,7 +31,7 @@ const main = async args => {
 
   let httpServer = new (require('http-server-plus'))()
 
-  const readFile = require('promise-toolbox').promisify(require('fs').readFile)
+  const readFile = require('promise-toolbox/promisify')(require('fs').readFile)
   await require('@xen-orchestra/async-map').default(
     config.http.listen,
     async ({ cert, key, ...opts }) => {
@@ -83,7 +83,7 @@ const main = async args => {
     safeMode: require('lodash/includes')(args, '--safe-mode'),
   })
   app.on('stop', () =>
-    require('promise-toolbox').fromCallback(cb => httpServer.stop(cb))
+    require('promise-toolbox/fromCallback')(cb => httpServer.stop(cb))
   )
   await app.start()
 
@@ -106,7 +106,7 @@ const main = async args => {
     })
   })
 
-  return require('promise-toolbox').fromEvent(app, 'stopped')
+  return require('promise-toolbox/fromEvent')(app, 'stopped')
 }
 main(process.argv.slice(2)).then(
   () => {
