@@ -531,6 +531,9 @@
               <th>RAM (GiB)</th>
               <th>Disk read (MiB)</th>
               <th>Disk write (MiB)</th>
+              <th>IOPS read</th>
+              <th>IOPS write</th>
+              <th>IOPS total</th>
               <th>Network RX (KiB)</th>
               <th>Network TX (KiB)</th>
             </tr>
@@ -542,6 +545,9 @@
                 <td>{{normaliseValue this.ram}} {{normaliseEvolution this.evolution.ram}}</td>
                 <td>{{normaliseValue this.diskRead}} {{normaliseEvolution this.evolution.diskRead}}</td>
                 <td>{{normaliseValue this.diskWrite}} {{normaliseEvolution this.evolution.diskWrite}}</td>
+                <td>{{normaliseValue this.iopsRead}} {{normaliseEvolution this.evolution.iopsRead}}</td>
+                <td>{{normaliseValue this.iopsWrite}} {{normaliseEvolution this.evolution.iopsWrite}}</td>
+                <td>{{normaliseValue this.iopsTotal}} {{normaliseEvolution this.evolution.iopsTotal}}</td>
                 <td>{{normaliseValue this.netReception}} {{normaliseEvolution this.evolution.netReception}}</td>
                 <td>{{normaliseValue this.netTransmission}} {{normaliseEvolution this.evolution.netTransmission}}</td>
               </tr>

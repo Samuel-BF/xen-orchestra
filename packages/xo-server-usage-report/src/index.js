@@ -224,6 +224,10 @@ async function getVmsStats ({ runningVms, xo }) {
     await Promise.all(
       map(runningVms, async vm => {
         const vmStats = await xo.getXapiVmStats(vm, 'days')
+        const iopsRead = computeDoubleMean(values(get(vmStats.stats.iops, 'r')))
+        const iopsWrite = computeDoubleMean(
+          values(get(vmStats.stats.iops, 'w'))
+        )
         return {
           uuid: vm.uuid,
           name: vm.name_label,
@@ -233,6 +237,9 @@ async function getVmsStats ({ runningVms, xo }) {
             computeDoubleMean(values(get(vmStats.stats.xvds, 'r'))) / mibPower,
           diskWrite:
             computeDoubleMean(values(get(vmStats.stats.xvds, 'w'))) / mibPower,
+          iopsRead,
+          iopsWrite,
+          iopsTotal: iopsRead + iopsWrite,
           netReception:
             computeDoubleMean(get(vmStats.stats.vifs, 'rx')) / kibPower,
           netTransmission:
@@ -417,6 +424,9 @@ async function computeEvolution ({ storedStatsPath, ...newStats }) {
         'ram',
         'diskRead',
         'diskWrite',
+        'iopsRead',
+        'iopsWrite',
+        'iopsTotal',
         'netReception',
         'netTransmission',
       ],
