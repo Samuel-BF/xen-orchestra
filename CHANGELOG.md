@@ -4,6 +4,8 @@
 
 ### Enhancements
 
+[Usage Report] Add IOPS read/write/total per VM [#3309](https://github.com/vatesfr/xen-orchestra/issues/3309) (PR [#3455](https://github.com/vatesfr/xen-orchestra/pull/3455))
+
 ### Bug fixes
 
 [OVA Import] Allow import of files bigger than 127GB (PR [#3451](https://github.com/vatesfr/xen-orchestra/pull/3451))
@@ -13,6 +15,7 @@
 
 ### Released packages
 
+- xo-server-usage-report v0.6.0
 - vhd-lib v0.3.1
 - xo-vmdk-to-vhd v0.1.4
 - xo-server v5.28.0
