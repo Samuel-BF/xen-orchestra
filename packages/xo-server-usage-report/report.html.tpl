@@ -219,6 +219,7 @@
             <td>{{normaliseValue this.value}} GiB</td>
           </tr>
           {{/each}}
+
           <tr>
             <td rowspan='{{math topVms.diskRead.length "+" 1}}' class="tableHeader">Disk read</td>
           </tr>
@@ -229,6 +230,7 @@
             <td>{{normaliseValue this.value}} MiB</td>
           </tr>
           {{/each}}
+
           <tr>
             <td rowspan='{{math topVms.diskWrite.length "+" 1}}' class="tableHeader">Disk write</td>
           </tr>
@@ -239,6 +241,18 @@
             <td>{{normaliseValue this.value}} MiB</td>
           </tr>
           {{/each}}
+
+          <tr>
+            <td rowspan='{{math topVms.iopsTotal.length "+" 1}}' class="tableHeader">IOPS</td>
+          </tr>
+          {{#each topVms.iopsTotal}}
+          <tr>
+            <td>{{shortUUID this.uuid}}</td>
+            <td>{{this.name}}</td>
+            <td>{{normaliseValue this.value}} MiB</td>
+          </tr>
+          {{/each}}
+
           <tr>
             <td rowspan='{{math topVms.netReception.length "+" 1}}' class="tableHeader">Network RX</td>
           </tr>
@@ -249,6 +263,7 @@
             <td>{{normaliseValue this.value}} KiB</td>
           </tr>
           {{/each}}
+
           <tr>
             <td rowspan='{{math topVms.netTransmission.length "+" 1}}' class="tableHeader">Network TX</td>
           </tr>
